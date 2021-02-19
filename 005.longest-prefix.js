@@ -31,5 +31,8 @@ console.log(longestCommonPrefix(strs));
  * 解法二
  * 二分查找法
  */
+let longestCommonPrefix = (strs) => {
+    
+}
 
 
