@@ -5,8 +5,8 @@
  * 逐渐累加长度，与后面的字符串进行同长度对比
  * 如果遇到不同的，则返回上一次比较的字符串
  */
-let strs = ["flower","flow","feight","floa","flright","flght"];
-/*let longestCommonPrefix = (strs) => {
+let strs = ["flowerd","flow","floight","floa","flright","floght"];
+let longestCommonPrefix = (strs) => {
     let res = "";
     if(strs.length === 0){
         return res;
@@ -23,15 +23,19 @@ let strs = ["flower","flow","feight","floa","flright","flght"];
         res = word;
     }
     return res;
-};/*
+};
 
 console.log(longestCommonPrefix(strs));
 
 /**
  * 解法二
  * 二分查找法
+ * 就是讲一组字符串中的第一个字符串取出
+ * 然后将其分为均等两部分，先将前部分比对出结果。
+ * 如果前半部分为公共前缀，则继续追加后半部分的字符。
+ * 如果前半部分不是公共前缀，则将前半部分的字符再进行截取。
  */
-let longestCommonPrefix = (strs) => {
+let longestCommonPrefixs = (strs) => {
     let res = "";
     if(strs.length === 0){
         return res;
@@ -66,22 +70,24 @@ let count = 1;
 //如果前半部分为公共前缀，则继续判断
 let backDeal = (w1, w2) => {
     if(frontWord(w1)){
-        w1 += w2.substring(0, w2.substring(0, count));
+        w1 += w2.substring(0, count);
         count ++;
-        backDeal(w1);
+        //在递归函数内部没有对递归函数进行return，否则外层函数无法接收到返回值
+        return backDeal(w1, w2);
     }
-    return w1; 
+    return w1.substring(0, w1.length-1);
 }
 
 //如果前半部分不是公共前缀，则继续递减
 let frontDeal = w1 => {
     if(!frontWord(w1)){
         w1 = w1.substring(0, w1.length-1);
-        frontDeal(w1);
+        //在递归函数内部没有对递归函数进行return，否则外层函数无法接收到返回值
+        return frontDeal(w1);
     }
     return w1;
 }
 
-console.log(longestCommonPrefix(strs))
+console.log(longestCommonPrefixs(strs))
 
 
