@@ -42,8 +42,8 @@ let _strStr = (haystack, needle) => {
     
     let i=0;
     while(i < n-l+1){
-        if(haystack.charAt(i) === ){
-
+        if(haystack.charAt(i) === needle[0]){
+            
         }
     }
 }
