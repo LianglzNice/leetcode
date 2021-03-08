@@ -6,7 +6,7 @@
  * 解法一
  * 利用 split()
  */
-let haystack = "hello", needle = "ll";
+let haystack = "hellosoflwfj", needle = "lwfj";
 let strStr = (haystack, needle) => {
     if(!needle) return 0;
     let arr = haystack.split(needle);
@@ -17,7 +17,7 @@ let strStr = (haystack, needle) => {
 
 /**
  * 解法二
- * 利用 substring()
+ * 利用 substring() 切割父字符串, substring(i, i+l) 与子字符串进行比对
  */
 let strStr = (haystack, needle) => {
     if(!needle) return 0;
@@ -33,18 +33,29 @@ let strStr = (haystack, needle) => {
 
 /**
  * 解法三
- * 
+ * 逐个字符串进行比较
+ * 如果首字母相同
+ * 开始逐个字符进行比较
  */
-let _strStr = (haystack, needle) => {
+let strStr = (haystack, needle) => {
     if(!needle) return 0;
     let n = haystack.length;
     let l = needle.length;
     
     let i=0;
     while(i < n-l+1){
-        if(haystack.charAt(i) === needle[0]){
-            
+        if(haystack.charAt(i) !== needle[0]){
+            i++;
+            continue;
         }
+        let j=1;
+        while(j <= l){
+            if(haystack.charAt(i+j) !== needle[j]) break;
+            j++;
+        }
+        i++;
+        if(j === l) return --i;
     }
+    return -1;
 }
-console.log(_strStr(haystack, needle));
+console.log(strStr(haystack, needle));
