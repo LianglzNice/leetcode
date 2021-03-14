@@ -17,15 +17,13 @@ let maxValue = () => {
     for(let i=n; i>=0; i--){
         //列数
         for(let j=0; j<arr[i].length; j++){
-            let b = arr[i][j] + list[j];
-            let br = arr[i][j] + list[j+1];
-            list[j] = b >= br ? b : br;
+            list[j] = arr[i][j] + (list[j] >= list[j+1] ? list[j] : list[j+1]);
         }
 
         path.unshift(bestPath(i, list));
     }
 
-    console.log(list);
+    console.log(list[0]);
     console.log(path);
 };
 //双指针
