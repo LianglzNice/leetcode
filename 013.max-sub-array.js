@@ -46,16 +46,29 @@ maxValue();*/
  * 动态规划
  */
 let nums = [-2,1,-3,4,-1,2,1,-5,4];
-let list = nums;
 var maxSubArray = nums => {
-    for(let i=0; i<nums.length; ++i){
-        for(let j=i+1; j<nums.length-i-1; j++){
-            list[i] = list[i] + ;
+    let list = [];
+    list.push(nums[0]);
+
+    for(let i=1; i<nums.length; i++){
+        if(list[i-1] > 0){
+            let sum = list[i-1] + nums[i];
+            list.push(sum);
+        }else{
+            list.push(nums[i]);
         }
     }
-    list.push(nums[nums.length-1]);
+
+    let j=0;
+    for(let i=0; i<list.length; i++){
+        if(list[i] > list[j]){
+            j=i;
+        }
+    }
+    return list[j];
 };
-maxSubArray(nums);
+console.log(maxSubArray(nums));
+
 
 /**
  * 最大子序和
