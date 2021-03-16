@@ -1,4 +1,4 @@
-let arr = [
+/*let arr = [
     [7],
     [3, 8],
     [8, 1, 0],
@@ -37,7 +37,7 @@ let bestPath = (times, list) => {
     return [times, j];
 };
 
-maxValue();
+maxValue();*/
 /**
  * 最大子序和
  * @param {number[]} nums
@@ -45,7 +45,17 @@ maxValue();
  * 解法一
  * 动态规划
  */
-
+let nums = [-2,1,-3,4,-1,2,1,-5,4];
+let list = nums;
+var maxSubArray = nums => {
+    for(let i=0; i<nums.length; ++i){
+        for(let j=i+1; j<nums.length-i-1; j++){
+            list[i] = list[i] + ;
+        }
+    }
+    list.push(nums[nums.length-1]);
+};
+maxSubArray(nums);
 
 /**
  * 最大子序和
